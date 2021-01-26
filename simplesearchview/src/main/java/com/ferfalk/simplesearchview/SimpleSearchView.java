@@ -16,12 +16,6 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.speech.RecognizerIntent;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
-import com.google.android.material.tabs.TabLayout;
-import androidx.core.widget.ImageViewCompat;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -34,11 +28,18 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.core.widget.ImageViewCompat;
+
 import com.ferfalk.simplesearchview.utils.ContextUtils;
 import com.ferfalk.simplesearchview.utils.DimensUtils;
 import com.ferfalk.simplesearchview.utils.EditTextReflectionUtils;
 import com.ferfalk.simplesearchview.utils.SimpleAnimationListener;
 import com.ferfalk.simplesearchview.utils.SimpleAnimationUtils;
+import com.google.android.material.tabs.TabLayout;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -374,7 +375,8 @@ public class SimpleSearchView extends FrameLayout {
         }
 
         searchEditText.setText(keepQuery ? query : null);
-        searchEditText.requestFocus();
+        if (animate)
+            searchEditText.requestFocus();
 
         if (animate) {
             SimpleAnimationUtils.AnimationListener animationListener = new SimpleAnimationListener() {
